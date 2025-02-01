@@ -3,7 +3,7 @@ this .sql file you must install "postgis" extension to help datatype for coordin
 
 ----
 ### If you want download , then here link
-[download postgis]([http://localhost/](https://download.osgeo.org/postgis/windows/)) <br />
+[here Links](https://download.osgeo.org/postgis/windows/) <br />
 1.go to pg17 <br />
 2.download postgis-bundle-pg17-3.5.2x64.zip <br />
 3.extract file <br />
