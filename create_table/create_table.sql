@@ -35,7 +35,7 @@ CREATE TABLE clinic(
 	clinic_sub_district VARCHAR(255) NOT NULL,
 	clinic_street VARCHAR(255) NOT NULL,
 	clinic_number VARCHAR(255) NOT NULL,
-	clinic_zip VARCHAR(5) NOT NULL ;
+	clinic_zip VARCHAR(5) NOT NULL 
 );
 
 -- create clinic income
@@ -108,7 +108,7 @@ CREATE TABLE service(
 CREATE TABLE service_available(
 	service_name VARCHAR(255),
 	clinic_id INTEGER,
-	PRIMARY KEY (service_name ,clinic_id)
+	PRIMARY KEY (service_name ,clinic_id),
 	FOREIGN KEY (service_name) REFERENCES service(service_name),
 	FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id)
 );
@@ -120,7 +120,7 @@ CREATE TABLE offer(
 	dentist_cut NUMERIC CHECK (dentist_cut >= 0) NOT NULL,
 	PRIMARY KEY (service_name , tel),
 	FOREIGN KEY (service_name) REFERENCES service(service_name),
-	FOREIGN KEY (tel) REFERENCES dentist(tel)
+	FOREIGN KEY (tel) REFERENCES dentist_account(tel)
 );
 
 -- create promotion
@@ -132,13 +132,13 @@ CREATE TABLE promotion(
 
 -- create promotion info
 CREATE TABLE promotion_info(
-	clinic_id SERIAL,
+	clinic_id INTEGER,
 	promotion_id SERIAL,
 	status BOOLEAN NOT NULL,
 	promotion_limit INTEGER CHECK (promotion_limit >= 1),
 	PRIMARY KEY (clinic_id,promotion_id),
 	FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id),
-	FOREIGN KEY (promotion_id) REFERENCES promotion(promotion_id),
+	FOREIGN KEY (promotion_id) REFERENCES promotion(promotion_id)
 );
 
 -- create booking table
@@ -155,7 +155,7 @@ CREATE TABLE booking(
 	user_tel VARCHAR(10) NOT NULL,
 	dentist_tel VARCHAR(10) NOT NULL,
 	service_name VARCHAR(255) NOT NULL,
-	clinic_id SERIAL NOT NULL,
+	clinic_id INTEGER NOT NULL,
 	date_range DATE NOT NULL,
 	time_range TIME WITH TIME ZONE NOT NULL,
 	status booking_status NOT NULL DEFAULT 'confirmed',
@@ -164,5 +164,5 @@ CREATE TABLE booking(
 	FOREIGN KEY (dentist_tel) REFERENCES dentist_account(tel),
 	FOREIGN KEY (service_name) REFERENCES service(service_name),
 	FOREIGN KEY (clinic_id) REFERENCES clinic(clinic_id),
-	FOREIGN KEY (promotion_id) REFERENCES promotion(promotion_id),
+	FOREIGN KEY (promotion_id) REFERENCES promotion(promotion_id)
 );
