@@ -24,7 +24,7 @@ CREATE OR REPLACE FUNCTION admin_user_history()
  				OLD.province , OLD.district , OLD.sub_district , OLD.street_name , OLD.zip_code);
  		RETURN NEW;
  	END;
- 	$$
+ 	$$;
 
 CREATE TRIGGER update_user_data
  	BEFORE UPDATE

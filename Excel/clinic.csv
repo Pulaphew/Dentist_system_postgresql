@@ -1,0 +1,5 @@
+"clinic_id","clinic_tel","gps_location","clinic_province","clinic_district","clinic_sub_district","clinic_street","clinic_number","clinic_zip"
+1,"0223456789","0101000020E6100000FAEDEBC039832B4080B74082E2DF5340","Bangkok","Pathum Wan","Siam","Rama I Rd","123","10330"
+2,"0532345678","0101000020E6100000D26F5F07CEC9324014D044D8F0405440","Chiang Mai","Mueang","Nimmanhaemin","Huay Kaew Rd","456","50200"
+5,"0223456789","0101000020E61000008048BF7D1D205940FAEDEBC039832B40","Bangkok","Pathum Wan","Siam","Rama I Rd","123","10330"
+6,"0532345678","0101000020E6100000EC2FBB270FBF5840D26F5F07CEC93240","Chiang Mai","Mueang","Nimmanhaemin","Huay Kaew Rd","456","50200"

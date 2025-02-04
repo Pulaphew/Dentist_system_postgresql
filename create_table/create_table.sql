@@ -79,22 +79,25 @@ CREATE TABLE dentist_account(
 ) ;
 
 -- create dentist time slot table
+DROP TABLE IF EXISTS dentist_time_slot ;
 CREATE TABLE dentist_time_slot(
 	tel VARCHAR(10),
-	-- date_time DATE NOT NULL ,
+	date_time DATE ,
 	start_time TIME WITH TIME ZONE,
 	end_time TIME WITH TIME ZONE ,
-	PRIMARY KEY (tel,start_time,end_time),
+	PRIMARY KEY (tel,date_time,start_time,end_time),
 	FOREIGN KEY (tel) REFERENCES dentist_account(tel)
 );
 
 -- create dentist education table
+DROP TABLE IF EXISTS dentist_education ;
 CREATE TABLE dentist_education(
 	tel VARCHAR(10),
 	dentist_college VARCHAR(255),
 	dentist_degree VARCHAR(255),
 	field VARCHAR(255),
-	PRIMARY KEY (tel,dentist_college,dentist_degree,field)
+	PRIMARY KEY (tel,dentist_college,dentist_degree,field),
+	FOREIGN KEY (tel) REFERENCES dentist_account(tel)
 );
 
 -- create service table
@@ -149,7 +152,6 @@ CREATE TYPE booking_status AS ENUM(
 	'cancelled',
 	'completed'
 );
-
 CREATE TABLE booking(
 	booking_id SERIAL PRIMARY KEY,
 	user_tel VARCHAR(10) NOT NULL,
@@ -157,7 +159,7 @@ CREATE TABLE booking(
 	service_name VARCHAR(255) NOT NULL,
 	clinic_id INTEGER NOT NULL,
 	date_range DATE NOT NULL,
-	time_range TIME WITH TIME ZONE NOT NULL,
+	time_range TIME WITH TIME ZONE,
 	status booking_status NOT NULL DEFAULT 'confirmed',
 	promotion_id INTEGER ,
 	FOREIGN KEY (user_tel) REFERENCES patient_account(tel),
