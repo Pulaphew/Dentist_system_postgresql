@@ -25,16 +25,14 @@
         "clinic_street": { "bsonType": "string" },
         "clinic_number": { "bsonType": "string" },
         "clinic_zip": { "bsonType": "string" },
-        "dentist_in_clinic": {
+        "service_available": {
             "bsonType": "array",
             "items": {
                 "bsonType": "object",
                 "properties": {
-                    "tel": { "bsonType": "string" },
-                    "certificate_of_proficiency": { "bsonType": "string" },
-                    "employement_date": { "bsonType": "date" },
-                    "previous_work": { "bsonType": "string" },
-                    "base_salary": { "bsonType": "int" }
+                    "_id": { "bsonType": "objectId" },
+                    "service_name": { "bsonType": "string" },
+                    "clinic_id": { "bsonType": "int" }
                 }
             }
         }
